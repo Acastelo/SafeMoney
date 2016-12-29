@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="com.ags.safemoney.activities.LoginActivity"
     android:fillViewport="false"
@@ -27,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:theme="@style/TextLabel" >
 
             <EditText
                 android:id="@+id/edtLoginEmail"
@@ -35,14 +37,15 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/lbl_email"
                 android:inputType="textEmailAddress"
-                android:theme="@styles/TextLabel" />
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:theme="@style/TextLabel" >
 
             <EditText
                 android:id="@+id/edtLoginSenha"
@@ -50,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/lbl_senha"
                 android:inputType="textPassword"
-                android:theme="@styles/TextLabel"/>
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
