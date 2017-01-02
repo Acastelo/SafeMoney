@@ -53,7 +53,11 @@ public class CadastroActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-
+    public void limpar(){
+        edtNome.setText("");
+        edtEmail.setText("");
+        edtSenha.setText("");
+    }
     private class LinkLoginListener implements View.OnClickListener {
 
         @Override
@@ -68,10 +72,12 @@ public class CadastroActivity extends AppCompatActivity {
         public void onClick(View view) {
             try {
                 usuario.save();
-                Toast.makeText(CadastroActivity.this, "Cadastro REALIZADO com sucesso", Toast.LENGTH_LONG).show();
+                limpar();
+                Toast.makeText(CadastroActivity.this, getString(R.string.cadastro_ok), Toast.LENGTH_LONG).show();
             }catch (ControllerException e){
                 e.printStackTrace();
-                Toast.makeText(CadastroActivity.this, getText(R.string.cadastro_fail), Toast.LENGTH_LONG).show();
+                limpar();
+                Toast.makeText(CadastroActivity.this, getString(R.string.cadastro_fail), Toast.LENGTH_LONG).show();
             }
         }
     }
