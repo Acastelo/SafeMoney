@@ -20,7 +20,7 @@
     <string name="criar_conta">Criar Conta</string>
     <string name="faca_login">Já é Membro? Faça Login</string>
 
-    <!--Meses-->
+    <!--Mêses-->
     <string name="janeiro">Janeiro</string>
     <string name="title_activity_login">Sign in</string>
 
@@ -36,4 +36,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Mensagens -->
+    <string name="cadastro_ok">Usuário Cadastrado com Sucesso!</string>
+    <string name="cadastro_fail">Falha no Cadastro de Usuário!</string>
 </resources>

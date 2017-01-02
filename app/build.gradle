@@ -34,4 +34,5 @@ dependencies {
 
     // Sugar ORM
     compile 'com.github.satyan:sugar:1.4'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }
