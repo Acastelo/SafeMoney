@@ -1,6 +1,7 @@
 package com.ags.safemoney.model;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Unique;
 
 /**
  * Created by luiz.alexandre on 02/01/2017.
@@ -8,6 +9,8 @@ import com.orm.SugarRecord;
 
 public class Usuario extends SugarRecord {
     private String nome;
+
+    @Unique
     private String email;
     private String senha;
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ags.safemoney.R;
+import com.ags.safemoney.controler.UsuarioController;
 import com.ags.safemoney.controler.exception.ControllerException;
 import com.ags.safemoney.model.Usuario;
 import com.google.android.gms.appindexing.AppIndex;
@@ -22,6 +23,7 @@ public class CadastroActivity extends AppCompatActivity {
     private TextView txtLogin;
 
     private Usuario usuario;
+    private UsuarioController controller;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -36,12 +38,6 @@ public class CadastroActivity extends AppCompatActivity {
         edtNome = (EditText) findViewById(R.id.cad_nome);
         edtEmail = (EditText) findViewById(R.id.cad_email);
         edtSenha = (EditText) findViewById(R.id.cad_senha);
-
-        String nome = edtNome.getText().toString();
-        String email = edtEmail.getText().toString();
-        String senha = edtSenha.getText().toString();
-
-        usuario = new Usuario(nome, email, senha);
 
         btnCriaConta = (Button) findViewById(R.id.btn_cria_conta);
         btnCriaConta.setOnClickListener(new BtnCriaContaListener());
@@ -70,15 +66,19 @@ public class CadastroActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
+            String nome = edtNome.getText().toString();
+            String email = edtEmail.getText().toString();
+            String senha = edtSenha.getText().toString();
+
+            usuario = new Usuario(nome, email, senha);
             try {
                 usuario.save();
-                limpar();
                 Toast.makeText(CadastroActivity.this, getString(R.string.cadastro_ok), Toast.LENGTH_LONG).show();
             }catch (ControllerException e){
                 e.printStackTrace();
-                limpar();
                 Toast.makeText(CadastroActivity.this, getString(R.string.cadastro_fail), Toast.LENGTH_LONG).show();
             }
+            limpar();
         }
     }
 }

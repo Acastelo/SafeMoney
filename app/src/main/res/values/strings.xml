@@ -19,7 +19,10 @@
     <string name="conta">Não tem conta ainda? Crie uma.</string>
     <string name="criar_conta">Criar Conta</string>
     <string name="faca_login">Já é Membro? Faça Login</string>
-
+    <string name="login_incorreto">Não foi possível realizar login. Usuário ou Senha incorreto!</string>
+    <string name="email_obrigatorio">"O campo Email é obrigatório"</string>
+    <string name="senha_obrigatorio">"O campo Senha é obrigatório"</string>
+    <string name="sucesso_login">Bem-vindo ao Safe Money</string>
     <!--Mêses-->
     <string name="janeiro">Janeiro</string>
     <string name="title_activity_login">Sign in</string>
