@@ -1,5 +1,7 @@
 package com.ags.safemoney.controler;
 
+import android.content.Context;
+
 import com.ags.safemoney.model.Usuario;
 
 /**
