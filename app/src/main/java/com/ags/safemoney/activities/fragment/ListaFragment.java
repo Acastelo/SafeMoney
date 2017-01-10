@@ -14,7 +14,6 @@ import com.ags.safemoney.R;
  */
 
 public class ListaFragment extends Fragment {
-
     private String title;
     private int page;
 
