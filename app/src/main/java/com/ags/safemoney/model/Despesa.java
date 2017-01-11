@@ -28,4 +28,20 @@ public class Despesa extends SugarRecord {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 }

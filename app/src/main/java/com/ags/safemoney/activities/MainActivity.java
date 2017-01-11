@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapterViewPager);
     }
 
-    public List<Despesa> listaCarros(int qtd) {
+    public List<Despesa> listaDespesas(int qtd) {
         String[] descricoes = new String[]{"Colégio", "Compras do Mês", "Remédios do Júlio", "Passecard", "Alimentação do dia"};
         String[] meses = new String[]{"JANEIRO", "FEVEIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO"};
         Double[] valores = new Double[]{10.00, 58.00, 47.30, 25.00, 458.00};
@@ -71,8 +71,19 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return Meses.JANEIRO.toString();
+                case 1:
+                    return Meses.FEVEREIRO.toString();
+                case 2:
+                    return Meses.MARCO.toString();
+                case 3:
+                    return Meses.ABRIL.toString();
+                default:
+                    return null;
+            }
 
-            return "Pagina" + position;
         }
     }
 }
