@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ags.safemoney.R;
+import com.ags.safemoney.activities.IRecyclerViewOnClickListener;
 import com.ags.safemoney.activities.MainActivity;
 import com.ags.safemoney.activities.adapter.DespesaAdapter;
 import com.ags.safemoney.model.Despesa;
@@ -20,7 +22,7 @@ import java.util.List;
  * Created by luiz.alexandre on 09/01/2017.
  */
 
-public class ListaFragment extends Fragment {
+public class ListaFragment extends Fragment implements IRecyclerViewOnClickListener {
     private String title;
     private int page;
     private List<Despesa> despesaList;
@@ -79,9 +81,18 @@ public class ListaFragment extends Fragment {
 
         despesaList = ((MainActivity) getActivity()).listaDespesas(10);
         DespesaAdapter adapter = new DespesaAdapter(getActivity(), despesaList);
+        adapter.setMclickListener(this);
         rvDespesas.setAdapter( adapter );
 
         label.setText("Despesas de " + title);
         return view;
+    }
+
+    @Override
+    public void onClickListener(View v, int position) {
+        Toast.makeText(getActivity(), "Position " + position, Toast.LENGTH_SHORT ).show();
+
+        DespesaAdapter adapter = new DespesaAdapter(getActivity(), despesaList);
+
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ags.safemoney.R;
+import com.ags.safemoney.activities.IRecyclerViewOnClickListener;
 import com.ags.safemoney.model.Despesa;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class DespesaAdapter extends RecyclerView.Adapter<DespesaAdapter.MyViewHolder> {
     private List<Despesa> despesas;
     private LayoutInflater mLayoutInflater;
+    private IRecyclerViewOnClickListener mclickListener;
 
     public DespesaAdapter(Context c, List<Despesa> l) {
         despesas = l;
@@ -39,7 +41,7 @@ public class DespesaAdapter extends RecyclerView.Adapter<DespesaAdapter.MyViewHo
         holder.txtDescicao.setText( despesas.get(position).getDescricao() );
         holder.txtMes.setText( despesas.get(position).getMes() );
 
-        holder.txtValor.setText(String.format("R$ %2f", despesas.get(position).getValor()));
+        holder.txtValor.setText(String.format("R$ %.2f", despesas.get(position).getValor()));
 
     }
 
@@ -48,12 +50,16 @@ public class DespesaAdapter extends RecyclerView.Adapter<DespesaAdapter.MyViewHo
         return despesas.size();
     }
 
+    public void setMclickListener(IRecyclerViewOnClickListener listener) {
+        this.mclickListener = listener;
+    }
+
     public void addListItem(Despesa d, int position){
         despesas.add(d);
         notifyItemInserted(position);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView txtDescicao;
         public TextView txtMes;
         public TextView txtValor;
@@ -64,6 +70,15 @@ public class DespesaAdapter extends RecyclerView.Adapter<DespesaAdapter.MyViewHo
             txtDescicao = (TextView) itemView.findViewById(R.id.txt_descricao_despesa);
             txtMes = (TextView) itemView.findViewById(R.id.txt_mes_despesa);
             txtValor = (TextView) itemView.findViewById(R.id.txt_valor_despesa);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (mclickListener != null){
+                mclickListener.onClickListener(view, getPosition());
+            }
         }
     }
 }
