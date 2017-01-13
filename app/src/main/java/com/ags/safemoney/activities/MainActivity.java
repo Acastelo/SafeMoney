@@ -1,11 +1,15 @@
 package com.ags.safemoney.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.ags.safemoney.R;
 import com.ags.safemoney.activities.fragment.ListaFragment;
@@ -17,6 +21,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentPagerAdapter adapterViewPager;
+    private PagerTabStrip pTab;
+    private FloatingActionButton fabAddDespesa;
 
 
     @Override
@@ -26,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
         adapterViewPager = new MeuAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapterViewPager);
+
+        pTab = (PagerTabStrip) findViewById(R.id.page_header);
+        pTab.setTextColor(getResources().getColor(R.color.colorIcons));
+
+        fabAddDespesa = (FloatingActionButton) findViewById(R.id.add_button);
+        fabAddDespesa.setOnClickListener(new AddDespesaListener());
     }
 
     public List<Despesa> listaDespesas(int qtd) {
@@ -77,13 +89,21 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return Meses.FEVEREIRO.toString();
                 case 2:
-                    return Meses.MARCO.toString();
+                    return Meses.MARÇO.toString();
                 case 3:
                     return Meses.ABRIL.toString();
                 default:
                     return null;
             }
 
+        }
+    }
+
+    private class AddDespesaListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent addDespesa = new Intent(getApplicationContext(), AddDespesasActivity.class);
+            startActivity(addDespesa);
         }
     }
 }
